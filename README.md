@@ -9,6 +9,14 @@ React static documentation generator, aimed at merging the development and the d
 
 ## Installation
 
+Install it in your project :
+
+`npm install react-doks`
+
+or globally :
+
+`npm install -g react-doks`
+
 ## See it in action
 
 ## CLI

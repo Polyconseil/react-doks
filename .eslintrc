@@ -1,0 +1,65 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0, // Unnecessary because using ES6 modules
+    "react/require-extension": 0, // Deprecated and crashes atom (2016-08-04)
+    "react/no-multi-comp": 0, // We allow multiple components in the same file (be smart though...)
+    "func-names": 0, // Babel do it for us
+    "max-len": 0, // We have big screens (be smart though...)
+    "no-alert": 0, // Alert are used in Shadox
+    "generator-star-spacing": 0, // Crashes eslint (2016-08-04)
+    "linebreak-style": 0, // Git makes it transparent
+    "react/jsx-filename-extension": 0, // We voluntarily use .js for JSX
+    "react/jsx-no-target-blank": 0, // All links are internal
+    "jsx-a11y/img-has-alt": 0, // Don't care
+    "arrow-body-style": 0, // Don't care
+    "no-continue": 0,
+    "import/prefer-default-export": 0, // Not always a good idea
+
+    // Maybe later but not sure
+    "react/jsx-curly-spacing": 0,
+    "no-prototype-builtins": 0,
+    "jsx-a11y/label-has-for": 0,
+    "import/no-named-as-default": 0,
+    "no-return-assign": 0,
+    "no-case-declarations": 0,
+
+     // Will come later
+    "object-curly-spacing": 0,
+    "quote-props": 0,
+    "prefer-template": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "no-param-reassign": 0,
+    "react/no-string-refs": 0, // Deprecated by React but still supported
+    "react/sort-comp": 0, // Waiting for https://github.com/yannickcr/eslint-plugin-react/pull/685. Order to respect: static, properties, lifecycle, custom, render
+
+    // Fixed, switched to error level :
+    "react/jsx-indent": [2, 2],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-first-prop-new-line": 2,
+
+    // Start fixing those
+    "react/jsx-space-before-closing": 1,
+    "react/prefer-stateless-function": 1,
+    "no-mixed-operators": [1, {"allowSamePrecedence": true}],
+    "prefer-rest-params": 1,
+    "no-underscore-dangle": [1, { "allow": ["_class"] }], // Allow for reserved words
+    "react/prop-types": 1,
+    "block-spacing": 1,
+    "react/no-find-dom-node": 1,
+    "react/self-closing-comp": 1,
+    "no-confusing-arrow": 1,
+    "consistent-return": 1,
+    "space-before-function-paren": [1, "never"],
+
+    "indent": [2, 2, { "SwitchCase": 1 }],
+  },
+  "env": {
+    "mocha": true,
+    "browser": true,
+  },
+  "globals": {
+
+  }
+}
