@@ -7,11 +7,11 @@ React static documentation generator, aimed at merging the development and the d
 - Markdown documentation with interactive code examples
 - Automatic props table
 
-## Philosophy
+## What is it ?
 
-This tool picks every folder following a certain naming convention (say `__docs__`) in a given folder's subtree, and loads every `*.js` file it finds in there in an explorer.
+This tool picks every folder following a certain naming convention (by default, `__docs__`) in a given folder's subtree, and loads every `*.js` file it finds in those folders. Then, it bundles an explorer that allows to browse the docs, with a hot-reload feature when in dev mode to allow developping interactive docs. 
 
-## [See it in action](#todo)
+## [See it in action](https://polyconseil.github.io/react-doks)
 
 (coming soon)
 
