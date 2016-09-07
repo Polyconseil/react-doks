@@ -8,6 +8,7 @@
     "doks": "./bin/index.js",
     "start": "babel src --out-dir lib --ignore src/tests --watch",
     "build": "babel src --out-dir lib --ignore src/tests",
+    "prepublish": "babel src --out-dir lib --ignore src/tests",
     "doks-build": "./bin/index.js"
   },
   "repository": {
