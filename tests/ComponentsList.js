@@ -1,9 +1,15 @@
-import ComponentsList from '../components/SidePanel';
+import ComponentsList from '../src/runtime/components/SidePanel';
 const assert = require('chai').assert;
 const React = require('react');
 const ReactDOM = require('react-dom');
 const { mount } = require('enzyme');
 
+/*
+  {
+    filePath : string. File path, aka Webpack request to fetch component,
+    name: name to be displayed in the list
+  }
+ */
 const componentsFixtures = [
   {
     filePath: './yolo/__docs__/Component.js',
@@ -26,13 +32,6 @@ const componentsFixtures = [
     name: 'feature/MySuperDuperComponent:SuperDuperUberWrapper',
   },
 ];
-
-/*
- {
-   filePath : string. File path, aka Webpack request to fetch component,
-   name: name to be displayed in the list
- }
-*/
 
 describe('List of components exposing a doc', () => {
   function inputEvent(input, value) {

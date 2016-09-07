@@ -13,4 +13,5 @@ module.exports = {
   contentBase: __dirname,
   index: 'index.html',
   serveStatic: [],
+  port: 3003,
 };

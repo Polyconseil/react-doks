@@ -13,8 +13,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/tests/__karma-setup__.js',
-      'src/tests/**/*.js',
+      './tests/__karma-setup__.js',
+      './tests/**/*.js',
     ],
 
     // list of files to exclude
@@ -24,8 +24,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.js': ['webpack'],
-      // 'tests/karma/karma-setup.js': ['webpack'],
+      './src/**/*.js': ['webpack'],
+      './tests/**/*.js': ['webpack'],
     },
 
     webpack: {
@@ -45,9 +45,7 @@ module.exports = function(config) {
             loaders: ['babel'],
             include: [
               path.join(__dirname, 'src'),
-              path.join(__dirname, '../src/'),
-              // path.join(__dirname, 'modules_overrides'),
-              // path.join(__dirname, '..', 'test-utils') // First file to be run in karma
+              path.join(__dirname, 'tests'),
             ],
             exclude: [
               /simplemde\.min/,

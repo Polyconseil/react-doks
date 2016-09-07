@@ -135,7 +135,7 @@ export default class EcologyWrapper extends React.Component {
 
         <h3 style={ BLOCK_HEADER_COLLAPSED_STYLE }><FontAwesome name="file-text-o" />&nbsp;&nbsp;readme.md</h3>
 
-        <div id={"ecology"} className="markdown-body" style={ BLOCK_CONTENT_COLLAPSED_STYLE }>
+        <div id={"ecology"} className="markdown-body" style={{ ...BLOCK_CONTENT_COLLAPSED_STYLE, marginBottom: 45 }}>
           <Ecology
             exportGist
             copyToClipboard
