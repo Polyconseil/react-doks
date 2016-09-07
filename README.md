@@ -2,23 +2,40 @@
 
 React static documentation generator, aimed at merging the development and the documentation workflow.
 
-- Add the component you're working on, and watch it live reload
-- Generate static docs and push them to Github pages
+- Load the component you're working on, develop in isolation, enjoy hot reload
+- Generate static docs and serve them with Github pages (or your own server)
 - Markdown documentation with interactive code examples
-- Automatic props table generated from JSDoc
+- Automatic props table
 
-## Installation
+## Philosophy
 
-Install it in your project :
+This tool picks every folder following a certain naming convention (say `__docs__`) in a given folder's subtree, and loads every `*.js` file it finds in there in an explorer.
 
-`npm install react-doks`
+## [See it in action](#todo)
 
-or globally :
+(coming soon)
 
-`npm install -g react-doks`
+## How to use
 
-## See it in action
+### Devserver or static build
 
-## CLI
+Doks has two main working modes :
+- hot reload dev server
+- static docs explorer generation
 
-## Customization
+Start Doks in hot reload mode : 
+
+`doks`
+
+Start Doks in "build" mode :
+ 
+`doks --build`
+
+### Folder restriction :
+
+Additionally, you can provide :
+ 
+- a specific folder in which Doks should look for documentation, or a single file :  
+`doks src/components/MySuperDuperComponent`
+- a single file to load (this will load Doks without its side menu) :  
+`doks src/components/MySuperDuperComponent/__docs__/aSingleDocsFile.js`

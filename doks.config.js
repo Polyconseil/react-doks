@@ -2,7 +2,8 @@ const path = require('path');
 
 
 /**
- * React doks configuration example, applied to the react-doks repo
+ * React doks configuration for the react-doks repo
+ * See doks-docs/Configuration
  *
  */
 module.exports = {
@@ -10,8 +11,7 @@ module.exports = {
   defaultRoot: path.join(__dirname, 'doks-docs'),
   webpackConfig: require('./webpack.config.default.js'),
   staticBuildDir: path.join(__dirname, 'docs'),
-  contentBase: __dirname,
-  index: 'index.html',
-  serveStatic: [],
+  index: path.join(__dirname, 'index.html'),
+  serve: [],
   port: 3003,
 };

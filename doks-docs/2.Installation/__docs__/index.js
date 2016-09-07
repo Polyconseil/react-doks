@@ -1,0 +1,1 @@
+export const overview = require('!!raw!./installation.md');
