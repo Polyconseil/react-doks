@@ -31,3 +31,5 @@ const node = document.createElement('div');
 node.id = 'root';
 const b = document.getElementsByTagName('body')[0];
 b.appendChild(node);
+
+global.DOCS_EXPLORER_REQUIRE_CONTEXT_DOCS_FOLDERS = '__docs__';

@@ -5,6 +5,7 @@ import React from 'react';
 import SingleDoc from './SingleDoc';
 import SidePanel from './SidePanel';
 import DraggableBar from './DraggableBar';
+import cleanFilePath from '../utils/cleanFilePath';
 
 const WRAPPER_STYLE = {
   backgroundColor: 'white',
@@ -47,7 +48,7 @@ export default class Docs extends React.Component {
     const components = this.props.context.keys().map((filePath) => {
       return ({
         filePath,
-        name: this.generateComponentName(filePath),
+        name: cleanFilePath(filePath),
       });
     });
 
@@ -64,31 +65,6 @@ export default class Docs extends React.Component {
       components,
       displayedComponentPath,
     });
-  }
-
-  /**
-   * Generate the component's canonical name from its file path
-   * The generated name is to be used in URL hash and as a title for the doc
-   */
-  generateComponentName = (request) => {
-    const DOCS_FOLDER = this.DOCS_FOLDER;
-    const INDEX_JS = 'index.js';
-
-    // Stripping "./" :
-    const path = request.startsWith('./') ? request.substring(2) : request;
-
-    // Removing index.js ('a/b/index.js' => 'a/b')
-    if (path.endsWith(INDEX_JS)) {
-      return path.substr(0, path.length - DOCS_FOLDER.length - INDEX_JS.length - 2);
-    }
-
-    // Stripping __docs__ :
-    const pathWithoutDoc = path.replace(new RegExp('/?' + DOCS_FOLDER + '/'), '/');
-
-    const name = pathWithoutDoc.startsWith('/') ? pathWithoutDoc.substring(1) : pathWithoutDoc;
-
-    // Stripping extension // TODO .jsx ?
-    return name.substr(0, name.length - 3);
   }
 
   /**
@@ -144,7 +120,7 @@ export default class Docs extends React.Component {
 
         <div style={DOC_STYLE}>
           { this.state.displayedComponentPath ?
-            <SingleDoc doc={displayedDoc} name={this.generateComponentName(this.state.displayedComponentPath)} key={this.state.displayedComponentPath} />
+            <SingleDoc doc={displayedDoc} name={cleanFilePath(this.state.displayedComponentPath)} key={this.state.displayedComponentPath} />
             :
             <p style={{fontSize: 30, width: '100%', marginTop: '200px', textAlign: 'center'}}>
               Please select a component in the list
