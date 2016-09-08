@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable no-console */
+
 const webpack = require('webpack');
 const rimraf = require('rimraf');
 const ncp = require('ncp');
@@ -35,7 +36,6 @@ const copyStaticAssets = (config) => {
  * Build a static bundle that can be pushed on gh-pages, or served by a web server :
  */
 module.exports = function(config) {
-
   console.log('Building static docs...');
   try {
     // rm -rf already existing docs folder, then recreate it

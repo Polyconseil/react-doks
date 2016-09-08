@@ -33,9 +33,6 @@ module.exports = (config, bundleConstants) => {
     webpackConfig.plugins = [definePlugin];
   }
 
-
-
-
   // Bundle output :
   webpackConfig.output = {
     path: path.join(config.staticBuildDir, 'dist'), // ignored when in dev server mode

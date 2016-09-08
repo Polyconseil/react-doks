@@ -67,7 +67,7 @@ export default class DraggableBar extends Component {
       return; // Ne pas repaint plus d'une fois toutes les 10ms
     }
     this.prevT = now;
-    if (event.clientX === 0) {// est parfois envoyé en fin de drag (Chrome)
+    if (event.clientX === 0) { // est parfois envoyé en fin de drag (Chrome)
       return;
     }
 
@@ -94,7 +94,7 @@ export default class DraggableBar extends Component {
         onDragStart={this.endDragging}
         onMouseEnter={this.separatorOver}
         onMouseLeave={this.separatorOut}>
-        <div style={{...defaultStyle.inner, ...style.inner}}></div>
+        <div style={{...defaultStyle.inner, ...style.inner}} />
       </div>
     );
   }

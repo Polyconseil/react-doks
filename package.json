@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "karma start",
+    "lint": "eslint ./src/ || exit 0",
     "prepublish": "babel src --out-dir lib",
     "start": "node ./src/bin/index.js",
     "doks": "node ./src/bin/index.js",

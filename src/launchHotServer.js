@@ -1,7 +1,7 @@
+/* eslint-disable no-console */
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const express = require('express');
-const path = require('path');
 
 /**
  * Launch a dev server, given a config object (especially : config.webpackCongig, which has been prepared using
