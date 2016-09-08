@@ -4,7 +4,7 @@
 import React from 'react';
 import SingleDoc from './SingleDoc';
 import SidePanel from './SidePanel';
-import DraggableBar from './DraggableBar'
+import DraggableBar from './DraggableBar';
 
 const WRAPPER_STYLE = {
   backgroundColor: 'white',
@@ -82,10 +82,10 @@ export default class Docs extends React.Component {
       return path.substr(0, path.length - DOCS_FOLDER.length - INDEX_JS.length - 2);
     }
 
-    // Striping __docs__ :
-    const pathWithoutDoc = path.replace(new RegExp('/?' + DOCS_FOLDER + '/'), ':');
+    // Stripping __docs__ :
+    const pathWithoutDoc = path.replace(new RegExp('/?' + DOCS_FOLDER + '/'), '/');
 
-    const name = pathWithoutDoc.startsWith(':') ? pathWithoutDoc.substring(1) : pathWithoutDoc;
+    const name = pathWithoutDoc.startsWith('/') ? pathWithoutDoc.substring(1) : pathWithoutDoc;
 
     // Stripping extension // TODO .jsx ?
     return name.substr(0, name.length - 3);
@@ -108,7 +108,6 @@ export default class Docs extends React.Component {
     } else {
       this.setState({sidePanelWidth: 170});
     }
-
   }
 
   onSidePanelCollapse = () => {
@@ -140,7 +139,7 @@ export default class Docs extends React.Component {
         />
 
         { !this.state.sidePanelCollapsed &&
-          <DraggableBar left={this.state.sidePanelWidth} onChange={this.onSidePanelDrag} style={{inner: {width: 3, backgroundColor: 'rgb(23,31,40)'}}} />
+          <DraggableBar left={this.state.sidePanelWidth} onChange={this.onSidePanelDrag} style={{inner: {width: 5, backgroundColor: 'rgb(23,31,40)'}}} />
         }
 
         <div style={DOC_STYLE}>

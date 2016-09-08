@@ -1,8 +1,9 @@
+import { assert } from 'chai';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { mount } from 'enzyme';
+
 import ComponentsList from '../src/runtime/components/SidePanel';
-const assert = require('chai').assert;
-const React = require('react');
-const ReactDOM = require('react-dom');
-const { mount } = require('enzyme');
 
 /*
   {
@@ -12,26 +13,26 @@ const { mount } = require('enzyme');
  */
 const componentsFixtures = [
   {
-    filePath: './yolo/__docs__/Component.js',
-    name: 'yolo/Component',
+    filePath: './foo/__docs__/index.js',
+    name: 'foo',
   },
   {
-    filePath: './qsdf/MySuperDuperComponent/index.js',
-    name: 'qsdf/MySuperDuperComponent',
+    filePath: './bar/components/__docs__/index.js',
+    name: 'bar/components',
   },
   {
-    filePath: './qsdf/MySuperDuperComponent/ElComponento.js',
-    name: 'qsdf/MySuperDuperComponent:ElComponento',
-  },
-  {
-    filePath: './feature/MySuperDuperComponent/SuperDuperWrapper.js',
-    name: 'feature/MySuperDuperComponent:SuperDuperWrapper',
-  },
-  {
-    filePath: './feature/MySuperDuperComponent/SuperDuperUberWrapper.js',
-    name: 'feature/MySuperDuperComponent:SuperDuperUberWrapper',
+    filePath: './bar/components/__docs__/Raphaello.js',
+    name: 'bar/components/Raphaello',
   },
 ];
+
+/* Fixture should result in :
+
+foo (clickable)
+bar (not clickable)
+  components (clickable)
+    Raphaello (clickable)
+*/
 
 describe('List of components exposing a doc', () => {
   function inputEvent(input, value) {
@@ -62,15 +63,15 @@ describe('List of components exposing a doc', () => {
     // XXX sinon ?
     const spy = () => { called = true; };
 
-    const wrapper = mount(<ComponentsList collapsed={true} onCollapse={spy} components={componentsFixtures} onSelect={() => {}} />, { attachTo: document.getElementById('root')}); // eslint-disable-line
+    const wrapper = mount(<ComponentsList collapsed onCollapse={spy} components={componentsFixtures} onSelect={() => {}} />, { attachTo: document.getElementById('root')});
 
     // Clicking :
     wrapper.find('button').simulate('click');
-
     assert.ok(called);
 
-    const wrapper2 = mount(<ComponentsList collapsed={false} components={componentsFixtures} onSelect={() => {}} />, { attachTo: document.getElementById('root')}); // eslint-disable-line
-    assert.lengthOf(wrapper2.find('.components-list'), 1, 'component list should be displayed');
+    const wrapper2 = mount(<ComponentsList collapsed={false} components={componentsFixtures} onSelect={() => {}} />, { attachTo: document.getElementById('root')});
+
+    assert.ok((wrapper2.find('ul').length > 1), 'component list should be displayed');
 
     const node = wrapper2.get(0);
     const width = ReactDOM.findDOMNode(node).clientWidth;
@@ -80,17 +81,15 @@ describe('List of components exposing a doc', () => {
 
   it('displays the list of components', () => {
     // Test on components :
-    const wrapper = mount(<ComponentsList components={componentsFixtures} onSelect={() => {}} />, {attachTo: document.getElementById('root')});
+    const wrapper = mount(<ComponentsList collapsed={false} onCollapse={() => {}} components={componentsFixtures} onSelect={() => {}} />, {attachTo: document.getElementById('root')});
 
-    // Uncollapsing :
-    wrapper.find('button').simulate('click');
+    const list = wrapper.find('ul li span[data-path]'); // <li> tags containing a clickable component name (not a title)
+    const clickables = list.nodes.filter(n => n.getAttribute('data-path') !== 'false');
+    assert.lengthOf(clickables, componentsFixtures.length, 'list of component fed through a fixture');
 
-    const list = wrapper.find('.components-list li[data-path]'); // <li> tags containing a clickable component name (not a title)
-    assert.lengthOf(list, componentsFixtures.length, 'list of component fed through a fixture');
-
-    // Test on titles (allows lightly testing tree view) :
-    const titles = wrapper.find('.components-list .components-folder');
-    assert.lengthOf(titles, 3, 'features list contains three folders');
+    // Test on titles (allows testing tree view) :
+    const titles = wrapper.find('ul li');
+    assert.lengthOf(titles, 4, 'fixtures list contains 4 folders');
   });
 
   it('allows selecting a component to see its doc', () => {
@@ -103,12 +102,9 @@ describe('List of components exposing a doc', () => {
       called = true;
     };
 
-    const wrapper = mount(<ComponentsList components={componentsFixtures} onSelect={spy} />, {attachTo: document.getElementById('root')});
+    const wrapper = mount(<ComponentsList collapsed={false} components={componentsFixtures} onSelect={spy} />, {attachTo: document.getElementById('root')});
 
-    // Uncollapsing :
-    wrapper.find('button').simulate('click');
-
-    const componentsClickable = wrapper.find('.components-list li[data-path]');
+    const componentsClickable = wrapper.find('ul li span[data-path]');
 
     // Find the link corresponding to the second fixture, and click on it :
     const clickedLink = componentsClickable.findWhere(node => {
@@ -128,17 +124,17 @@ describe('List of components exposing a doc', () => {
 
     const textInput = wrapper.find('input');
 
-    simulateChange(textInput, 'feature');
-    let list = wrapper.find('.components-list li[data-path]');
-    assert.lengthOf(list, 2, 'list has been filtered by "feature"');
+    simulateChange(textInput, 'foo');
+    let list = wrapper.find('ul li');
+    assert.lengthOf(list, 1, 'list has been filtered by "foo"');
 
-    simulateChange(textInput, 'uber');
-    list = wrapper.find('.components-list li[data-path]');
-    assert.lengthOf(list, 1, 'list has been filtered by "Uber" (case insensitive)');
+    simulateChange(textInput, 'raph');
+    list = wrapper.find('ul li');
+    assert.lengthOf(list, 3, 'list has been filtered by "raph" (case insensitive)');
 
-    simulateChange(textInput, 'featureyolo');
-    list = wrapper.find('.components-list li[data-path]');
-    const titles = wrapper.find('.components-list h5');
+    simulateChange(textInput, 'stupid search');
+    list = wrapper.find('ul li');
+    const titles = wrapper.find('ul li');
     assert.lengthOf(list, 0, 'searching for a non-present item displays an empty list');
     assert.lengthOf(titles, 0, 'searching for a non-present item displays no titles');
   });
