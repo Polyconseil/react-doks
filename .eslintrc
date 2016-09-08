@@ -59,6 +59,9 @@
     "browser": true,
   },
   "globals": {
-
+    "DOCS_EXPLORER_REQUIRE_CONTEXT_REGEXP": false,
+    "DOCS_EXPLORER_REQUIRE_CONTEXT_ROOT": false,
+    "DOCS_EXPLORER_REQUIRE_CONTEXT_DOCS_FOLDERS": false,
+    "DOCS_EXPLORER_SINGLE_FILE": false
   }
 }
