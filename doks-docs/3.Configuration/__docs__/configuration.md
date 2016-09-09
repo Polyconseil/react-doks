@@ -49,7 +49,7 @@ The folder, in which Doks should output the generated static site when launching
 
 `<absolute/path/to/project/root>/docs` allows to [serve the docs with gh-pages easily](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch). 
 
-**HEADS UP :** This folder's contents will be **deleted** when docs builds your static docs. 
+**HEADS UP :** This folder's contents will be **deleted** when Doks builds your static docs. 
 
 ### index
 

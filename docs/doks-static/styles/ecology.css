@@ -40,6 +40,11 @@
   font-weight: bold;
 }
 
+.markdown-body .Prop-examples-title:before, .markdown-body .Prop-default:before {
+  content: "\a ";
+  white-space: pre;
+}
+
 /**
   Buttons of the playground (export gist and copy to clipboard), skinned github-like
 **/
@@ -62,3 +67,4 @@
   padding: 15px;
   margin: 15px 0;
 }
+

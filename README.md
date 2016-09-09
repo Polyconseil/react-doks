@@ -13,7 +13,7 @@ This tool picks every folder following a certain naming convention (by default, 
 
 ## [See it in action](https://polyconseil.github.io/react-doks)
 
-(coming soon)
+[See an example demo component](https://polyconseil.github.io/react-doks/#Demo/components/WonderfulComponent)
 
 ## How to use
 
