@@ -57,7 +57,13 @@ export default class Docs extends React.Component {
 
     let displayedComponentPath = null;
     if (selectedName) {
-      displayedComponentPath = components.find(c => c.name === selectedName).filePath;
+      const selectedComponent = components.find(c => c.name === selectedName);
+      if (selectedComponent) {
+        displayedComponentPath = selectedComponent.filePath;
+      } else {
+        displayedComponentPath = null;
+        location.hash = '';
+      }
     }
 
     // Store in state :
