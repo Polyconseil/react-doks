@@ -21,9 +21,10 @@ module.exports = (config, bundleConstants) => {
 
   const definePlugin = new webpack.DefinePlugin({
     DOCS_EXPLORER_REQUIRE_CONTEXT_REGEXP: bundleConstants.regexp, // We don't stringify regexp, so that it remains a RegExp litteral in the compiled source
-    DOCS_EXPLORER_REQUIRE_CONTEXT_ROOT: JSON.stringify(bundleConstants.requireContextRoot), // Root of the require.context that will be generated
-    DOCS_EXPLORER_REQUIRE_CONTEXT_DOCS_FOLDERS: JSON.stringify(config.docsFolder), // Root of the require.context that will be generated
-    DOCS_EXPLORER_SINGLE_FILE: JSON.stringify(bundleConstants.requireSingleFile), // Allows to make the bundle as lightweight as possible
+    DOCS_EXPLORER_DEFAULT_ROOT: JSON.stringify(bundleConstants.requireContextRoot), // Root of the require.context that will be generated
+    DOCS_EXPLORER_DOCS_FOLDERS: JSON.stringify(config.docsFolder), // Naming convention (eg __docs__)
+    DOCS_EXPLORER_SINGLE_FILE: JSON.stringify(bundleConstants.singleFile), // Makes the bundle as light as possible
+    DOCS_EXPLORER_SELECTED_PATH: JSON.stringify(bundleConstants.selectedPath),
   });
 
   // Passing down computed constants to the bundle :

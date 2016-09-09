@@ -2,7 +2,7 @@
  * Clean a __docs__ file path to generate a nice name
  */
 export default function(filePath) {
-  const DOCS_FOLDER = DOCS_EXPLORER_REQUIRE_CONTEXT_DOCS_FOLDERS;
+  const DOCS_FOLDER = DOCS_EXPLORER_DOCS_FOLDERS;
 
   const foldersArray = filePath.split('/');
 

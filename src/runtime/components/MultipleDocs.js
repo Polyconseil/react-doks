@@ -24,7 +24,7 @@ export default class Docs extends React.Component {
   /**
    * Name of the folders where the docs components will be fetched :
    */
-  DOCS_FOLDER = DOCS_EXPLORER_REQUIRE_CONTEXT_DOCS_FOLDERS;
+  DOCS_FOLDER = DOCS_EXPLORER_DOCS_FOLDERS;
 
   /**
    * this.props.context must be obtained via WP's require.context()

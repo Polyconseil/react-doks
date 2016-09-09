@@ -48,15 +48,12 @@ config.buildStatic = buildStatic;
 if (args.length) {
   const cwd = process.cwd();
 
-  // Relative or absolute path ?
-  let selectedPath;
-  if ((args[0]).startsWith('/')) {
-    selectedPath = args[0];
+  // Prepend CWD if given path isn't filesystem absolute :
+  if ((args[0]).startsWith(path.separator)) {
+    config.selectedPath = args[0];
   } else {
-    selectedPath = path.join(cwd, args[0]);
+    config.selectedPath = path.join(cwd, args[0]);
   }
-
-  config.contextPath = selectedPath;
 }
 
 doks(config);
