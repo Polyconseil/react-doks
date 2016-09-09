@@ -40,7 +40,9 @@ describe('List of components exposing a doc', () => {
     // But we want to fake the "value" field of that element by using a Proxy
     return {
       target: new Proxy(input, {
-        get: (target, name) => name === 'value' ? value : target[name],
+        get: (target, name) => {
+          return name === 'value' ? value : target[name];
+        },
       }),
     };
   }
@@ -140,7 +142,7 @@ describe('List of components exposing a doc', () => {
   });
 
   it('allows to refresh', () => {
-    const wrapper = mount(<ComponentsList components={componentsFixtures} onSelect={() => {}}/>, {attachTo: document.getElementById('root')});
+    const wrapper = mount(<ComponentsList components={componentsFixtures} onSelect={() => {}} />, {attachTo: document.getElementById('root')});
     const link = wrapper.find('.refreshLink').get(0);
     assert.ok(link.getAttribute('href') === '?' || link.getAttribute('href') === '.', 'All refresh links should refresh the page');
 

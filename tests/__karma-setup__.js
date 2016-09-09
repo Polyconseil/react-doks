@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-// Babel-polyfill needed in the webpack bundles to use async/await
+// Babel-polyfill needed in the webpack bundles to use async/await in mocha's describe / it :
 import 'babel-polyfill';
 
 /**

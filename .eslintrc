@@ -34,8 +34,8 @@
     "react/no-string-refs": 0, // Deprecated by React but still supported
     "react/sort-comp": 0, // Waiting for https://github.com/yannickcr/eslint-plugin-react/pull/685. Order to respect: static, properties, lifecycle, custom, render
 
-
-    // Start fixing those
+    // Active rules
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
     "react/jsx-indent": [1, 2],
     "react/jsx-indent-props": [1, 2],
     "react/jsx-first-prop-new-line": 1,
