@@ -2,8 +2,9 @@ import React from 'react';
 import WonderfulComponent from '../WonderfulComponent';
 
 export const overview = require('!!raw!./WonderfulComponent.md');
-export const documentedComponents = { WonderfulComponent };
 export const source = require('!!raw!../WonderfulComponent');
+
+export const documentedComponents = { WonderfulComponent };
 
 export class Explorer extends React.Component {
   state = {
@@ -29,7 +30,8 @@ export class Explorer extends React.Component {
 
     return (
       <div>
-        <h1>Here's an "Explorer" component :</h1>
+        <h1>Here's an "Explorer" component</h1>
+
         <p>An Explorer component must wrap the component you're documenting with a component taking no props.
           You can achieve this simply by mapping an interactive example allowing to set the props manually through inputs (or you can simply decide the props values to show your beautiful component at it best !).</p>
         <div><label><input type="checkbox" checked={this.state.negative} onChange={this.onNegative} />Negative</label></div>
