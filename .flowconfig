@@ -1,0 +1,18 @@
+[ignore]
+.*/node_modules/react-fontawesome/.*
+.*/node_modules/babylon/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/radium/.*
+
+[include]
+
+[libs]
+interfaces/
+node_modules/flow-inlinestyle/index.js
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+# remap webpack raw-loader : require('!raw!!foo.js') => require('<PROJECT_ROOT>/flow_void.js')
+module.name_mapper='!!raw!\(.+\)$' -> '<PROJECT_ROOT>/flow_void.js'
