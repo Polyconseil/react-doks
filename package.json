@@ -55,7 +55,7 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "ecology": "^1.6.1",
+    "ecology": "aurelienshz/ecology",
     "express": "^4.14.0",
     "ncp": "^2.0.0",
     "react-custom-scrollbars": "^4.0.0",
