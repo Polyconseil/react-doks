@@ -1,6 +1,5 @@
 const path = require('path');
 
-
 /**
  * React doks configuration for the react-doks repo
  * See doks-docs/Configuration

@@ -7,6 +7,7 @@
     "test": "karma start",
     "lint": "eslint ./src/ ./tests/ || exit 0",
     "prepublish": "babel src --out-dir lib",
+    "dev": "babel src --out-dir lib --watch",
     "start": "node ./src/bin/index.js",
     "doks": "node ./src/bin/index.js",
     "doks-build": "node ./src/bin/index.js --build",

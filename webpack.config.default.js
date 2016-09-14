@@ -16,7 +16,7 @@ module.exports = {
         loaders: ['babel'],
         include: [
           path.join(__dirname, 'src'),
-        ], // XXX eclude lib
+        ],
       },
       {
         test: /\.json$/,
