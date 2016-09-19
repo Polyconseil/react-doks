@@ -10,6 +10,7 @@
     "dev": "babel src --out-dir lib --watch",
     "start": "node ./src/bin/index.js",
     "doks": "node ./src/bin/index.js",
+    "check": "karma start --single-run && npm run lint && flow",
     "doks-build": "node ./src/bin/index.js --build",
     "github": "node ./src/bin/index.js --build"
   },
