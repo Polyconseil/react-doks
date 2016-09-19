@@ -79,9 +79,6 @@ export default class ComponentsTree extends React.Component {
      */
     const renderTree = (tree) => {
       tree.sort((node1, node2) => {
-        if (node1.children.length && !node2.children.length) return 1;
-        if (node1.children.length && !node2.children.length) return -1;
-
         return node1.name.localeCompare(node2.name);
       });
 
