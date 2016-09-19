@@ -68,7 +68,8 @@ if (args.length) {
     }
   } catch (err) {
     // Path not found :
-    console.warn('WARNING : ', config.contextPath, 'not found.\nUsing default root folder : ', config.defaultRoot);
+    console.warn('WARNING : ', config.contextPath, 'not found.\nUsing default root folder : ', config.defaultRoot, 'Error is logged below.');
+    console.log(err);
     config.selectedPath = DEFAULT_ROOT_FOLDER;
   }
 }
