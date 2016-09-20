@@ -99,6 +99,17 @@ export default class EcologyWrapper extends React.Component {
 
     const DocumentedComponentName = false;
 
+    let apiDoc;
+    if (source) {
+      try {
+        apiDoc = docgen.parse(source, docgen.findAllExportedComponentDefinitions);
+      } catch (err) {
+        console.error('Error : failed parsing provided source. The error encountered by docgen is logged below.'); // eslint-disable-line no-console
+        console.error(err); // eslint-disable-line no-console
+      }
+    }
+
+
     return (
       <div>
         { DocumentedComponentName ?
@@ -140,7 +151,7 @@ export default class EcologyWrapper extends React.Component {
             exportGist
             copyToClipboard
             overview={ overview || 'No overview found' }
-            source={ source ? docgen.parse(source, docgen.findAllExportedComponentDefinitions) : null }
+            source={ apiDoc }
             scope={ playgroundScope }
             playgroundtheme="monokai"
             customRenderers={{
