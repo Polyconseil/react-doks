@@ -10,13 +10,14 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
   ],
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
+        test: /\.jsx?(.flow)?$/, // .js .jsx .js.flow
+        loader: 'babel-loader',
         include: [
-          path.join(__dirname, 'src'),
+          path.resolve(__dirname, 'src'),
         ],
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
@@ -36,7 +37,16 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    root: path.resolve('src'),
+  resolveLoader: {
+    alias: {
+      'raw': 'raw-loader',
+    }
   },
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src'),
+    ],
+  },
+  performance: false,
 };

@@ -44,5 +44,5 @@ module.exports = (config, bundleConstants) => {
   // Include the docs root folder to webpack loaders that should load js (babel for example)
   // We need this in case a file in requireContextRoot folder (folder specified in CLI) imports a file located
   // outside of this folder. That way, we ensure every source file is transpiled :
-  webpackConfig.module.loaders.find(l => l.test.test('file.js')).include.unshift(config.defaultRoot);
+  webpackConfig.module.rules.find(l => l.test.test('file.js')).include.unshift(config.defaultRoot);
 };

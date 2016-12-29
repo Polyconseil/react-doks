@@ -14,8 +14,7 @@ module.exports = (config) => {
   //
   const webpackConfig = config.webpackConfig;
 
-  webpackConfig.module.loaders.find(l => l.test.test('file.js')).loaders.unshift('react-hot');
-
+  webpackConfig.entry.unshift('react-hot-loader/patch');
   webpackConfig.entry.unshift('webpack-dev-server/client?http://localhost:' + config.port);
   webpackConfig.entry.unshift('webpack/hot/only-dev-server');
 
